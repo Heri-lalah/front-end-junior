@@ -118,20 +118,20 @@ import { reactive, computed, ref, onMounted } from 'vue';
 const taskList =reactive([
   {
     id: 1,
-    title : "Learn Vuejs3",
-    description: "The description of learning vuejs3",
+    title : "Add logo",
+    description: "The description of add logo",
     completed : true
   },
   {
     id:2,
-    title : "Learn React",
-    description: "The description of learning vuejs3",
+    title : "Add navbar",
+    description: "The description of add navbar",
     completed : false
   },
   {
     id:3,
-    title : "Learn Angular",
-    description: "The description of learning vuejs3",
+    title : "Add new task",
+    description: "The description of add new task",
     completed : false
   }
 ]);
