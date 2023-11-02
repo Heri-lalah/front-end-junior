@@ -15,9 +15,11 @@
               </section>
             </div>
             <div class="col-sm-12 col-lg-2">
-              <button class="btn btn-primary btn-sm"
+              <button
+              class="btn btn-primary btn-sm"
               data-bs-toggle="modal"
               data-bs-target="#modalTask"
+              @click.prevent="resetForm"
               >New task</button>
             </div>
           </div>
@@ -84,7 +86,7 @@
                 v-model="form.description"
                 ></textarea>
               </div>
-              <div class="form-check form-switch">
+              <div v-show="isEditing" class="form-check form-switch">
                 <input class="form-check-input"
                 v-model="form.completed"
                 :checked="form.completed"
