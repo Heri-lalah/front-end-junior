@@ -75,7 +75,6 @@
                 class="form-control"
                 id="inputTitle"
                 placeholder="Title..."
-                @input="$emit('update:title', $event.target.value)"
                 >
               </div>
               <div class="mb-3">
