@@ -140,11 +140,17 @@ const taskList =reactive([
 ]);
 
 const notCompletedCount = ref(null);
+const isEditing = ref(false);
+const form = reactive({
+  id: "",
+  title: "",
+  description:"",
+  completed: false,
+});
 
 const lastId = computed(() => {
    return taskList.length;
-})
-const isEditing = ref(false);
+});
 
 const validationForm = computed(() => {
   if(form.id!= "" || form.description!="")
@@ -152,33 +158,28 @@ const validationForm = computed(() => {
     return true
   }
   return false
-})
+});
+
 const closeModal = () => {
   resetForm();
   return document.getElementById("closeModal").click();
-}
-const form = reactive({
-  id: "",
-  title: "",
-  description:"",
-  completed: false,
-  validation: validationForm
-})
+};
+
 const resetForm = () => {
   form.id = "";
   form.title = "";
   form.description = "";
   form.completed = false;
-}
+};
 
 const getCount = () => {
   const count = taskList.filter((child) => child.completed == false);
   return notCompletedCount.value = count.length;
-}
+};
 
 const setCompletedCount = () => {
   notCompletedCount.value = getCount();
-}
+};
 
 onMounted(() => {
   getCount();
@@ -190,19 +191,21 @@ const setCompleted = (value) => {
     taskList[index].completed = !taskList[index].completed;
     setCompletedCount();
   }
-}
+};
+
 const onSubmit = (e) => {
 	e.preventDefault();
-
   taskList.push({
     id: lastId.value + 1,
     title: form.title,
     description : form.description,
     completed: form.completed,
   });
+
   setCompletedCount();
   closeModal();
-}
+};
+
 const onEdit = () => {
   const index = taskList.findIndex((index) => index.id == form.id);
   if(index!==null || index==undefined) {
@@ -212,18 +215,18 @@ const onEdit = () => {
   }
   setCompletedCount();
   closeModal();
-}
+};
 
 const onDelete = (key) => {
   const index = taskList.findIndex((index) => index.id == key.id);
   taskList.pop(taskList[index]);
   setCompletedCount();
-}
+};
 const setModalValue = (value) => {
   isEditing.value = true
   form.id = value.id;
   form.title = value.title;
   form.description = value.description;
   form.completed = value.completed;
-}
+};
 </script>
