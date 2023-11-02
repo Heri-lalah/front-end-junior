@@ -6,10 +6,10 @@
         <div class="col"></div>
         <div class="col-8">
           <div class="row g-2 align-items-center">
-            <div class="col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-4">
               <h3>Tasks</h3>
             </div>
-            <div class="col-sm-12 col-lg-4">
+            <div class="col-sm-12 col-lg-6">
               <section v-show="notCompletedCount>0">
                 <span class="fw-bold">Unfinished task</span> <span class="badge fw-bold bg-warning text-danger">{{ notCompletedCount }}</span>
               </section>
@@ -30,7 +30,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Description</th>
-                <th scope="col">Completion</th>
+                <th scope="col">Status</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -48,6 +48,7 @@
                 <td>
                   <div class="row g-1">
                     <div class="col"><button class="d-block w-100 btn btn-primary" @click.prevent="setModalValue(task)" data-bs-toggle="modal" data-bs-target="#modalTask">Edit</button></div>
+                    <div class="col"><button class="d-block w-100 btn btn-success" @click.prevent="setCompleted(task)">Completed</button></div>
                     <div class="col"><button class="d-block w-100 btn btn-danger" @click.prevent="onDelete(task)">Delete</button></div>
                   </div>
                 </td>
